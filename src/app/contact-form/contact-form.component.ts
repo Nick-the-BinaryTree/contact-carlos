@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+import { AllowContactService } from '../allow-contact.service';
+
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
@@ -13,7 +15,10 @@ export class ContactFormComponent implements OnInit {
     { name: 'Elon Musk approached us with an offer to move our country to the moon.' }
   ];
 
-  constructor(private fb: FormBuilder) { 
+  constructor(
+    private allowContactService: AllowContactService,
+    private fb: FormBuilder
+    ) { 
     this.form = this.fb.group({
       events: this.fb.array(this.events.map(() => this.fb.control(''))),
       message: ['', Validators.required],
@@ -24,8 +29,12 @@ export class ContactFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  showForm() {
+    return this.allowContactService.shouldAllowContact();
+  }
+
   onSubmit(form) {
-    console.log(form.getRawValue());
+    alert(JSON.stringify(form.getRawValue()));
   }
 
 }

@@ -1,6 +1,7 @@
 
 <form class='form-container'
   [formGroup]="form"
+  *ngIf="showForm()"
   (ngSubmit)="onSubmit(form)"
   >
   <label>What has happened?</label>
@@ -25,7 +26,7 @@
       name="message"
       placeholder="What is your message to me?"
       required>
-    <mat-error *ngIf="false">This is not why you contact Carlos.</mat-error>
+    <mat-error *ngIf="!form.controls.message.valid">This is not why you contact Carlos.</mat-error>
   </mat-form-field>
   <button color="primary"
     [disabled]="!form.valid"

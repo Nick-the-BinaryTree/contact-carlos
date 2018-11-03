@@ -9,7 +9,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 export class AppComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   navLinks = ['About Me', 'Contact'];
-  onForm = true;
+  onForm = false;
   title = 'contact-carlos';
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {

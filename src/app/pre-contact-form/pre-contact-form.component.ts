@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AllowContactService } from '../allow-contact.service';
 
 @Component({
   selector: 'app-pre-contact-form',
@@ -7,17 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreContactFormComponent implements OnInit {
   carlosLanguage = ['pasta', 'darkness'];
+  categoryM;
   translated='';
-  reason2;
-  showContact = false;
 
-  constructor() { }
+  constructor(
+    private allowContactService: AllowContactService
+  ) { }
 
   ngOnInit() {
   }
 
-  proceed() {
-    this.showContact = true;
+  allowContact(): void {
+    this.allowContactService.allowContact();
+  }
+
+  isPresident(): boolean {
+    return this.categoryM=='botswana';
   }
 
   updateTranslation(e): void {

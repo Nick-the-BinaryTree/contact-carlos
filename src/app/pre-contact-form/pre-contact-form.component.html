@@ -20,7 +20,7 @@
     <mat-select class="category-dropdown"
       name="category"
       [(ngModel)]="categoryM"
-      placeholder="What category to you most fall into?"
+      placeholder="What category best describes you?"
       required
       #categoryT="ngModel"
       >
@@ -31,8 +31,10 @@
   </mat-form-field>
   <button color="primary"
     mat-stroked-button
-    *ngIf="!categoryT.errors && !reasonT.errors && categoryT.touched && reasonT.touched"
-    (click)="proceed()"
+    *ngIf="!categoryT.errors && !reasonT.errors 
+      && categoryT.touched && reasonT.touched
+      && isPresident()"
+    (click)="allowContact()"
     >
     Proceed
   </button>
