@@ -1,0 +1,29 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html {
+  background: #141E30;  /* fallback for old browsers */
+  background: linear-gradient(0deg, #141E30, #434093);
+  background-position: center;
+  background-repeat:no-repeat;
+  background-size: cover;
+  min-height: 100%;
+}
+
+label, p {
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  line-height: 24px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: white;
+}
+

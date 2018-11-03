@@ -1,0 +1,39 @@
+<div class="form-container">
+  <mat-form-field>
+    <input
+      matInput
+      name="reason"
+      [(ngModel)]="reasonM"
+      placeholder="Briefly describe why you want to see the form to contact me"
+      required
+      #reasonT="ngModel"
+      (keyup)="updateTranslation($event)"
+      >
+    <mat-error *ngIf="reasonT.errors?.required">You don't have a reason?</mat-error>
+  </mat-form-field>
+  <span *ngIf='translated'>
+      <p>Translated Reason</p>
+      <p>{{translated}}</p>
+  </span>
+  <br>
+  <mat-form-field>
+    <mat-select class="category-dropdown"
+      name="category"
+      [(ngModel)]="categoryM"
+      placeholder="What category to you most fall into?"
+      required
+      #categoryT="ngModel"
+      >
+      <mat-option value="friendsFamily">Friends/Family</mat-option>
+      <mat-option value="botswana">President of Botswana</mat-option>
+    </mat-select>
+    <mat-error *ngIf="categoryT.errors?.required">Select an option, hombre</mat-error>
+  </mat-form-field>
+  <button color="primary"
+    mat-stroked-button
+    *ngIf="!categoryT.errors && !reasonT.errors && categoryT.touched && reasonT.touched"
+    (click)="proceed()"
+    >
+    Proceed
+  </button>
+</div>

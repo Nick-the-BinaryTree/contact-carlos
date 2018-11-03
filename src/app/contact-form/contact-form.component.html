@@ -1,0 +1,37 @@
+
+<form class='form-container'
+  [formGroup]="form"
+  (ngSubmit)="onSubmit(form)"
+  >
+  <label>What has happened?</label>
+  <div formArrayName="events" *ngFor="let event of events; let i = index">
+    <mat-checkbox [formControlName]="i">{{event.name}}</mat-checkbox>
+  </div>
+  <label> How is the Queen?</label>
+  <mat-radio-group formControlName="queenStatus">
+    <mat-radio-button value="Okay.">
+      Okay.
+    </mat-radio-button>
+    <br>
+    <mat-radio-button value="Not okay.">
+      Not okay.
+    </mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <mat-form-field class="message">
+    <input
+      formControlName="message"
+      matInput
+      name="message"
+      placeholder="What is your message to me?"
+      required>
+    <mat-error *ngIf="false">This is not why you contact Carlos.</mat-error>
+  </mat-form-field>
+  <button color="primary"
+    [disabled]="!form.valid"
+    mat-stroked-button
+    type="submit"
+    >
+    Send to Carlos
+  </button>
+</form>

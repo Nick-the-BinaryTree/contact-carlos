@@ -1,0 +1,27 @@
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="toolbar">
+    <button class="icon-button" mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="app-name">Contact Carlos</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container"
+    [class.top-margin]="mobileQuery.matches">
+    <mat-sidenav #snav [mode]="mobileQuery.matches? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item routerLink="." *ngFor="let nav of
+          navLinks; let i = index" (click)="sideNavLinkClick(i)">{{nav}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-about-me *ngIf="!onForm"></app-about-me>
+      <span *ngIf="onForm">
+        <app-pre-contact-form></app-pre-contact-form>
+        <app-contact-form></app-contact-form>
+      </span>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
